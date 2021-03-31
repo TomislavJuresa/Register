@@ -1,0 +1,15 @@
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\ConsoleRun.exe.config
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\ConsoleRun.exe
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\ConsoleRun.pdb
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\EntityFramework.dll
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\Models.dll
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\Models.pdb
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\Models.dll.config
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\EntityFramework.xml
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\obj\Debug\ConsoleRun.csprojAssemblyReference.cache
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\obj\Debug\ConsoleRun.csproj.CoreCompileInputs.cache
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\obj\Debug\ConsoleRun.csproj.CopyComplete
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\obj\Debug\ConsoleRun.exe
+C:\Users\tjure\source\repos\Projektarbeit\ConsoleRun\obj\Debug\ConsoleRun.pdb

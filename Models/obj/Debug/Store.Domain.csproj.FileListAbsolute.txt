@@ -1,0 +1,12 @@
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\Models.dll.config
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\Models.dll
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\Models.pdb
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\EntityFramework.dll
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\EntityFramework.xml
+C:\Users\tjure\source\repos\Projektarbeit\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tjure\source\repos\Projektarbeit\Models\obj\Debug\Store.Domain.csprojAssemblyReference.cache
+C:\Users\tjure\source\repos\Projektarbeit\Models\obj\Debug\Store.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tjure\source\repos\Projektarbeit\Models\obj\Debug\Store.Domain.csproj.CopyComplete
+C:\Users\tjure\source\repos\Projektarbeit\Models\obj\Debug\Models.dll
+C:\Users\tjure\source\repos\Projektarbeit\Models\obj\Debug\Models.pdb
