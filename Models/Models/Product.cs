@@ -12,7 +12,7 @@ namespace Store.Domain.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        [RegularExpression("^[0-9]+.[0-9-.]+$", ErrorMessage = "Must be a valid price, for example 11.22")]
+        [RegularExpression("^\\d{0,8}(\\.\\d{1,2})?$", ErrorMessage = "Must be a valid price, for example 11.22")]
 
         public double Price { get; set; }
     //    [ForeignKey("Vendor")]

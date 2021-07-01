@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -8,6 +10,9 @@ namespace Store.Domain.Models
 {
     public class Vendor : DomainObject
     {
+        [Index(IsUnique = true)]
+        [MaxLength(500)]
+
         public string CompanyName { get; set; }
         public string Adress { get; set; } //TODO: make Adress Class
         public DateTime CreatedOn { get; set; }

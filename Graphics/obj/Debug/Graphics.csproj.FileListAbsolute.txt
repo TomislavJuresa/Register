@@ -21,11 +21,13 @@ C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Graphics.csproj.Cor
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Graphics.csproj.CopyComplete
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Graphics.exe
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Graphics.pdb
-C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Window1.g.cs
-C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Window1.baml
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\AdminMenu.g.cs
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditProducts.g.cs
-C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditUsers.g.cs
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\AdminMenu.baml
 C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditProducts.baml
-C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditUsers.baml
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Vendors.g.cs
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Vendors.baml
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditAccounts.g.cs
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Employees.g.cs
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\EditAccounts.baml
+C:\Users\tjure\source\repos\Projektarbeit\Graphics\obj\Debug\Employees.baml

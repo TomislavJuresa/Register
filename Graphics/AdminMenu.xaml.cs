@@ -20,18 +20,31 @@ namespace Graphics
         public AdminMenu()
         {
             InitializeComponent();
+            usernameDisplayLabel.Content = "Welcome "+MainWindow.CurrentUser.DisplayUsername+"!";
         }
 
         private void ProductManagementButton_Click(object sender, RoutedEventArgs e)
         {
             EditProducts editProducts = new EditProducts();
-            editProducts.Show();
+            editProducts.Show(); 
         }
 
         private void UsersSelectionButton_Click(object sender, RoutedEventArgs e)
         {
-            EditUsers editUsers = new EditUsers();
+            EditAccounts editUsers = new EditAccounts();
             editUsers.Show();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Vendors vendors = new Vendors();
+            vendors.Show();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Employees employees = new Employees();
+            employees.Show();
         }
     }
 }

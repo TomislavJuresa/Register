@@ -22,13 +22,10 @@ namespace Graphics
     /// </summary>
     public partial class EditProducts : Window
     {
-        readonly SqlConnection sqlCon ;
-        private SqlDataAdapter sqlDataAdapter;
-        private DataTable dataTable;
-        private int ProductID;
-        private String Name;
-        private Double Price;
-        int VendorID;
+
+
+
+
 
         public EditProducts()
         {
@@ -37,8 +34,10 @@ namespace Graphics
             {
                 using (var context = new StoreContext() { })
                 {
-                    var products = context.Products.ToList();
+                    var products = context.Products.Include("Vendor").ToList();
                     EditProductsDataGrid.ItemsSource = products;
+                    VendorsListBox.ItemsSource = context.Vendors.Select(v=>v.CompanyName).ToList();
+                    usernameDisplayLabel.Content = "Welcome " + MainWindow.CurrentUser.DisplayUsername + "!";
                 }
 
             }
@@ -50,157 +49,164 @@ namespace Graphics
             
 
         }
-
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+            using (var context = new StoreContext() { })
             {
-                if (EditProductsDataGrid.Items.Count > 0 && (EditProductsDataGrid.SelectedItem)!=null)
+                try
                 {
-                    //ProductIDTextBox.Text = ((DataRowView)EditProductsDataGrid.SelectedItem).Row["ProductID"].ToString();
-                    NameTextBox.Text = ((Product)EditProductsDataGrid.SelectedItem).Name;
-                    PriceTextBox.Text = ((Product)EditProductsDataGrid.SelectedItem).Price.ToString();
-                    //Todo Listbox
-                    var vendor = ((Product)EditProductsDataGrid.SelectedItem).Vendor;
-                    if (vendor == null)
+                    if (EditProductsDataGrid.Items.Count > 0 && (EditProductsDataGrid.SelectedItem) != null)
                     {
-                        VendorIdTextBox.Text = "null";
-                        return;
+                        //ProductIDTextBox.Text = ((DataRowView)EditProductsDataGrid.SelectedItem).Row["ProductID"].ToString();
+                        var selectedProduct= (Product)EditProductsDataGrid.SelectedItem;
+                        NameTextBox.Text = selectedProduct.Name;
+                        PriceTextBox.Text = selectedProduct.Price.ToString();
+                        //Todo Listbox
+                        //context.Products.Find(selectedProduct).Vendor.Id;
+                        var originalProduct = context.Products.Include("Vendor").Where(p => p.Id == selectedProduct.Id).FirstOrDefault();
+                        var vendor = originalProduct.Vendor;
+                        VendorsListBox.SelectedItem = vendor.CompanyName;
+                            
+
+                        //var product = (Product)EditProductsDataGrid.SelectedItem.;
+                        //NameTextBox.Text = product.Name;
+                        //PriceTextBox.Text = product.Price.ToString();
+                        //VendorIdTextBox.Text = product.Vendor.Id.ToString();
+
+
                     }
-                    var id = vendor.Id;
-                    if (id == 0)
-                    {
-                        VendorIdTextBox.Text = "null";
-                        return;
-                    }
-                    VendorIdTextBox.Text = id.ToString();
-
-                    //var product = (Product)EditProductsDataGrid.SelectedItem.;
-                    //NameTextBox.Text = product.Name;
-                    //PriceTextBox.Text = product.Price.ToString();
-                    //VendorIdTextBox.Text = product.Vendor.Id.ToString();
-
-
                 }
-            }catch(Exception ex)
-            {
-                MessageBox.Show($"{ex.Message}There was a problem with gettin Row index");
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}There was a problem with gettin Row index");
+                }
             }
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            Name = NameTextBox.Text;
-            VendorID = Int32.Parse(VendorIdTextBox.Text);
-            Price = Double.Parse(PriceTextBox.Text);
-
-            try
+            using (var context = new StoreContext() { })
             {
-                using (var context = new StoreContext() { })
+                var name = NameTextBox.Text;
+                string vendorCompanyName = VendorsListBox.SelectedValue.ToString();
+                var vendor = context.Vendors.Where(v => v.CompanyName == vendorCompanyName).SingleOrDefault();
+                //VendorID = ((Vendor)VendorsListBox.SelectedItem).Id;
+                var price = Double.Parse(PriceTextBox.Text);
+                var createdOn = DateTime.Now;
+                try
                 {
+                   
+
+                        var product = new Product
+                        {
+                            Name = name,
+                            Price = price,
+                            Vendor = vendor,
+                            CreatedOn=createdOn
+                            
+                        };
+                        context.Products.Add(product);
+                        context.SaveChanges();
                     
-                    var product = new Product
-                    {
-                        Name = Name,
-                        Price = Price,
-                        Vendor = context.Vendors.Where(v => v.Id == VendorID).SingleOrDefault()
-                    };
-                    context.Products.Add(product);
-                    context.SaveChanges();
+
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace);
 
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.StackTrace);
-
-            }        
-
-            updateDataGrid();
-            clearTextBox();
+            UpdateDataGrid();
+            ClearTextBox();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Name = NameTextBox.Text;
-            VendorID = Int32.Parse(VendorIdTextBox.Text);
-            Price = Double.Parse(PriceTextBox.Text);
-            var ProductID =Int32.Parse( ((DataRowView)EditProductsDataGrid.SelectedItem).Row["Id"].ToString());
-            try
+            using (var context = new StoreContext() { })
             {
-                using (var context = new StoreContext() { })
+                var name = NameTextBox.Text;
+                string vendorCompanyName = VendorsListBox.SelectedValue.ToString();
+                var vendor = context.Vendors.Where(v => v.CompanyName == vendorCompanyName).SingleOrDefault();
+                var price = Double.Parse(PriceTextBox.Text);
+                var ProductID = Int32.Parse(((Product)(EditProductsDataGrid.SelectedItem)).Id.ToString());
+                try
                 {
-                    var products = context.Products;
+
                     var product = context.Products.Find(ProductID);
                     if (product == null)
                     {
                         MessageBox.Show("Product with given ProductID does not exists");
-                        updateDataGrid();
-                        clearTextBox();
+                        UpdateDataGrid();
+                        ClearTextBox();
                         return;
                     }
-                    product.Price = Price;
-                    product.Name = Name;
-                    product.Vendor = context.Vendors.Where(v => v.Id == VendorID).SingleOrDefault();
+                    product.Price = price;
+                    product.Name = name;
+                    product.Vendor = vendor;
                     context.SaveChanges();
-                    
-                    updateDataGrid();
-                    clearTextBox();
+
+                    UpdateDataGrid();
+                    ClearTextBox();
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.StackTrace);
 
-            }            
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace);
+
+                }
+            }
         }
-        private void updateDataGrid() {
+        private void UpdateDataGrid() {
             using (var context = new StoreContext() { })
             {
-                EditProductsDataGrid.ItemsSource = context.Products.ToList();
+                EditProductsDataGrid.ItemsSource = context.Products.Include("Vendor").ToList();
             }
         }
-        private void clearTextBox()
+        private void ClearTextBox()
         {
             this.PriceTextBox.Text = "";
             this.NameTextBox.Text = "";
-            this.VendorIdTextBox.Text = "";
+            
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Name = NameTextBox.Text;
-            VendorID = Int32.Parse(VendorIdTextBox.Text);
-            Price = Double.Parse(PriceTextBox.Text);
-            var ProductID = Int32.Parse(((DataRowView)EditProductsDataGrid.SelectedItem).Row["Id"].ToString());
-            try
+            using (var context = new StoreContext() { })
             {
-                using (var context = new StoreContext() { })
+                var ProductID = Int32.Parse(((Product)(EditProductsDataGrid.SelectedItem)).Id.ToString());
+                
+                try
                 {
-                    var products = context.Products;
+
                     var product = context.Products.Find(ProductID);
                     if (product == null)
                     {
                         MessageBox.Show("Product with given ProductID does not exists");
-                        updateDataGrid();
-                        clearTextBox();
+                        UpdateDataGrid();
+                        ClearTextBox();
                         return;
                     }
                     context.Products.Remove(product);
                     context.SaveChanges();
 
-                    updateDataGrid();
-                    clearTextBox();
+                    UpdateDataGrid();
+                    ClearTextBox();
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.StackTrace);
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.StackTrace);
+
+                }
             }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBox();
+            VendorsListBox.ItemsSource = null;
         }
     }
 }

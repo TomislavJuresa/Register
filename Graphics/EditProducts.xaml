@@ -11,12 +11,14 @@
         <Button x:Name="UpdateButton" Content="Update" HorizontalAlignment="Left" Margin="276,391,0,0" VerticalAlignment="Top" Width="50" Click="UpdateButton_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.278,4.952" Click="DeleteButton_Click"/>
         <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="249,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-        <TextBox x:Name="VendorIdTextBox" HorizontalAlignment="Left" Margin="249,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
-        <Label Content="VendorId" HorizontalAlignment="Left" Margin="162,328,0,0" VerticalAlignment="Top" Height="22" Width="64"/>
+        <Label Content="Vendor" HorizontalAlignment="Left" Margin="162,328,0,0" VerticalAlignment="Top" Height="35" Width="64"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="162,260,0,0" VerticalAlignment="Top" Height="23" Width="64" RenderTransformOrigin="0.532,2.341"/>
-        <DataGrid x:Name="EditProductsDataGrid" HorizontalAlignment="Left" Height="229" Margin="91,10,0,0" VerticalAlignment="Top" Width="605" SelectionChanged="DataGrid_SelectionChanged"/>
+        <DataGrid x:Name="EditProductsDataGrid" HorizontalAlignment="Left" Height="231" Margin="26,10,0,0" VerticalAlignment="Top" Width="614" SelectionChanged="DataGrid_SelectionChanged"/>
         <Label x:Name="label" Content="Price" HorizontalAlignment="Left" Margin="162,300,0,0" VerticalAlignment="Top" Width="64"/>
         <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="249,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="VendorsListBox" HorizontalAlignment="Left" Margin="249,328,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Height="20" Margin="460,390,0,0" VerticalAlignment="Top" Width="50" Click="ClearButton_Click"/>
+        <Label x:Name="usernameDisplayLabel" Content="" HorizontalAlignment="Left" Height="29" Margin="678,10,0,0" VerticalAlignment="Top" Width="106"/>
 
     </Grid>
 </Window>

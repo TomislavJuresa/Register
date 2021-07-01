@@ -1,4 +1,5 @@
 ﻿using Models.EntityFramework;
+using Store.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Graphics
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Account CurrentUser;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace Graphics
                 }
                 else
                 {
+                    CurrentUser = account;
                     MessageBox.Show($"welcome {account.DisplayUsername}");
                     var adminWindow = new AdminMenu();
                     adminWindow.Show();

@@ -8,7 +8,6 @@ namespace Store.Domain.Models
     public class DomainObject
     {
         [Key]
-
         public int Id { get; set; }
     }
 }

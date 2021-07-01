@@ -28,6 +28,6 @@ namespace Models.EntityFramework
     public DbSet<Product> Products { get; set; }
     public DbSet<Shelf> Shelves{ get; set; }
     public DbSet<Vendor> Vendors{ get; set; }
-
+        public object Account { get; set; }
     }
 }
